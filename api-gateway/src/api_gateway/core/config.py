@@ -17,9 +17,23 @@ class ApiConfig(BaseModel):
     v1: ApiV1Config
 
 
+class MinioConfig(BaseModel):
+    endpoint: str
+    access_key: str
+    secret_key: str
+    bucket: str
+    model_filename: str = "model.cbm"
+    metadata_filename: str = "metadata.json"
+
+
+class StorageConfig(BaseModel):
+    minio: MinioConfig
+
+
 class Config(BaseSettings):
     app: AppConfig
     api: ApiConfig
+    storage: StorageConfig
     model_config = SettingsConfigDict(
         env_file='.env',
         env_file_encoding='utf-8',

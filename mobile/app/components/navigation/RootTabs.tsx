@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import ApartmentsScreen from "../screens/ApartmentsScreen";
 import HomeScreen from "../screens/HomeScreen";
-import HistoryScreen from "../screens/HistoryScreen";
 
 const Tabs = createBottomTabNavigator();
 
@@ -21,8 +20,6 @@ export function RootTabs() {
             iconName = focused ? "home" : "home-outline";
           } else if (route.name === "Apartments") {
             iconName = focused ? "business" : "business-outline";
-          } else if (route.name === "History") {
-            iconName = focused ? "time" : "time-outline";
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -31,7 +28,6 @@ export function RootTabs() {
     >
       <Tabs.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: "Главная", title: "Главная" }} />
       <Tabs.Screen name="Apartments" component={ApartmentsScreen} options={{ title: "Квартиры" }} />
-      <Tabs.Screen name="History" component={HistoryScreen} options={{ title: "История" }} />
     </Tabs.Navigator>
   );
 }
